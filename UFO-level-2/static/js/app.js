@@ -84,6 +84,7 @@ input.addEventListener("keyup", function(event) {
       console.log(inputValueShape);
       
 
+      filteredData = []
     
     //filters the data based on the datetime, city, state, country and shape inputs
       var filteredData1 = tableData.filter(alien => {
@@ -91,7 +92,6 @@ input.addEventListener("keyup", function(event) {
         if (inputValueDate !="") {
           filteredData = tableData.filter(alien => alien.datetime === inputValueDate);
          } 
-
          else {
            return false;
           }
@@ -101,7 +101,7 @@ input.addEventListener("keyup", function(event) {
           filteredData = tableData.filter(alien => alien.city === inputValueCity);
          } 
          else {
-           return false;
+          return false;
           }
         
 
@@ -109,7 +109,7 @@ input.addEventListener("keyup", function(event) {
           filteredData = tableData.filter(alien => alien.state === inputValueState);
          } 
          else {
-           return false;
+          return false;;
           }
         
 
@@ -117,14 +117,14 @@ input.addEventListener("keyup", function(event) {
           filteredData = tableData.filter(alien => alien.country === inputValueCountry);
          } 
          else {
-           return false;
+          return false;;
           }
 
         if (inputValueShape !="") {
           filteredData = tableData.filter(alien => alien.shape === inputValueShape);
          } 
          else {
-           return false;
+          return false;;
           }
 
             //appends filtered data to the cleared table
