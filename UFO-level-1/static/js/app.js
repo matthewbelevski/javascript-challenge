@@ -21,7 +21,7 @@ var originalTable = tableData.forEach(function(aliens) {
 var button = d3.select("#filter-btn");
 
 //selects the form
-var form = d3.select("#datetime");
+var form = d3.select(".form-group");
 
 // Create event handlers
 button.on("click", runEnter);
