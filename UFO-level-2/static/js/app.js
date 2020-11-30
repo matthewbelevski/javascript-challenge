@@ -18,27 +18,20 @@ var originalTable = tableData.forEach(function(aliens) {
   });
 });
 
- //selects the button
-var button = d3.select("#filter-btn");
 
-//selects the form
-var form = d3.select(".form-group");
+//selects the forms
+var input = document.getElementById("filters");
 
-
-var input = document.getElementById("datetime");
-
-// Create event handlers
-//button.on("click", runEnter);
-//form.on("submit", event);
-
-
+//press enter on the forms to perform the filter
 input.addEventListener("keyup", function(event) {
 
+  //keycode for enter
   if (event.keyCode === 13) {
 
      // Prevent the page from refreshing
      event.preventDefault();
 
+     //create a new object to store the filter inputs to compare to the original data 
      var searchedData = {};
     
 
@@ -57,7 +50,7 @@ input.addEventListener("keyup", function(event) {
        var inputValueShape = inputElementShape.property("value").toLowerCase();
 
 
-      //checks to see if the form has a value in it and if it does it stores it in the searchData 
+      //checks to see if the relevant form has a value in it and if it does it stores it in the searchData object with appropriate key
       if (inputValueDate !="") {
       searchedData.datetime = inputValueDate;
       };
@@ -77,16 +70,8 @@ input.addEventListener("keyup", function(event) {
       if (inputValueShape !="") {
             searchedData.shape = inputValueShape;
             };
-
-
-
-      // searchedData.city = inputValueCity;
-      // searchedData.state = inputValueState;
-      // searchedData.country = inputValueCountry;
-      // searchedData.shape = inputValueShape;
-    
   
-
+    //displays the searchedData
     console.log(searchedData);
 
 
@@ -99,13 +84,14 @@ input.addEventListener("keyup", function(event) {
       });
 
 
-  
- console.log(filteredResult);
+  //display filteredResult in console
+    console.log(filteredResult);
 
     
       //clears the original table while keeping the header row
       var bodyRef = document.getElementById('ufo-table').getElementsByTagName('tbody')[0]; bodyRef.innerHTML = '';
      
+      //creates the new table based on the filtered results
       filteredResult.forEach((aliens) => {
         var row = tbody.append("tr");
         Object.entries(aliens).forEach(([key, value]) => {
@@ -114,6 +100,5 @@ input.addEventListener("keyup", function(event) {
         });
       });
      
-      document.getElementById("filter-btn").click();
     }
   });
