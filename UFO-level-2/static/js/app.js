@@ -50,24 +50,47 @@ input.addEventListener("keyup", function(event) {
       var inputElementShape = d3.select("#shape");
     
       // Get the value property of the input elements
-      // var inputValueDate = inputElementDate.property("value");
-      // var inputValueCity = inputElementCity.property("value").toLowerCase();
-      // var inputValueState = inputElementState.property("value").toLowerCase();
-      // var inputValueCountry = inputElementCountry.property("value").toLowerCase();
-      // var inputValueShape = inputElementShape.property("value").toLowerCase();
+       var inputValueDate = inputElementDate.property("value");
+       var inputValueCity = inputElementCity.property("value").toLowerCase();
+       var inputValueState = inputElementState.property("value").toLowerCase();
+       var inputValueCountry = inputElementCountry.property("value").toLowerCase();
+       var inputValueShape = inputElementShape.property("value").toLowerCase();
 
-      searchedData.datetime = inputElementDate.property("value");
-      searchedData.city = inputElementCity.property("value").toLowerCase();
-      searchedData.state = inputElementState.property("value").toLowerCase();
-      searchedData.country = inputElementCountry.property("value").toLowerCase();
-      searchedData.shape = inputElementShape.property("value").toLowerCase();
+
+      //checks to see if the form has a value in it and if it does it stores it in the searchData 
+      if (inputValueDate !="") {
+      searchedData.datetime = inputValueDate;
+      };
+
+      if (inputValueCity !="") {
+        searchedData.city = inputValueCity;
+        };
+
+      if (inputValueState !="") {
+          searchedData.state = inputValueState;
+        };
+
+      if (inputValueCountry !="") {
+          searchedData.country = inputValueCountry;
+          };
+    
+      if (inputValueShape !="") {
+            searchedData.shape = inputValueShape;
+            };
+
+
+
+      // searchedData.city = inputValueCity;
+      // searchedData.state = inputValueState;
+      // searchedData.country = inputValueCountry;
+      // searchedData.shape = inputValueShape;
     
   
 
     console.log(searchedData);
 
 
-    //filters the data object by the searchData
+    //filters the data object by the searchData using the keys
 
       filteredResult = tableData.filter(function (o) {
           return Object.keys(searchedData).every(function (k) {
