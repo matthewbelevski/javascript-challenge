@@ -8,7 +8,7 @@ var tbody = d3.select("tbody");
 
 //appends the data to the table
 var originalTable = tableData.forEach(function(aliens) {
-  console.log(aliens);
+  //console.log(aliens);
   var row = tbody.append("tr");
   Object.entries(aliens).forEach(function([key, value]) {
 
@@ -71,12 +71,12 @@ input.addEventListener("keyup", function(event) {
             searchedData.shape = inputValueShape;
             };
   
-    //displays the searchedData
+    //displays the searchedData into the console
     console.log(searchedData);
 
 
-    //filters the data object by the searchData using the keys
-
+    //filters the data object by the searchData by comparing the keys and their corresponding values
+    //if the values are the same then it stores them into filteredResult
       filteredResult = tableData.filter(function (o) {
           return Object.keys(searchedData).every(function (k) {
               return o[k] === searchedData[k];

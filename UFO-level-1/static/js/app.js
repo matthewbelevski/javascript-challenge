@@ -7,7 +7,7 @@ var tbody = d3.select("tbody");
 
 //appends the data to the table
 var originalTable = tableData.forEach(function(aliens) {
-  console.log(aliens);
+  //console.log(aliens);
   var row = tbody.append("tr");
   Object.entries(aliens).forEach(function([key, value]) {
 
@@ -21,7 +21,7 @@ var originalTable = tableData.forEach(function(aliens) {
 var button = d3.select("#filter-btn");
 
 //selects the form
-var form = d3.select(".form-group");
+var form = d3.select("#filters");
 
 // Create event handlers
 button.on("click", runEnter);
@@ -38,13 +38,15 @@ function runEnter() {
     // Get the value property of the input element
     var inputValue = inputElement.property("value");
   
+    //displays in the console what was written in the form after pressing the filter button
     console.log(inputValue);
     
   
   //filters the data based on the datetime key
     var filteredData = tableData.filter(alien => alien.datetime === inputValue);
   
-    console.log(filteredData);
+    //displays the filtered data into the console
+    //console.log(filteredData);
   
     //clears the original table while keeping the header row
     var bodyRef = document.getElementById('ufo-table').getElementsByTagName('tbody')[0]; bodyRef.innerHTML = '';
